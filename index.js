@@ -8,9 +8,9 @@ app.use(cors())
 const PORT = process.env.PORT || 3001;  // Use Render's assigned port or fallback to 3001 locally
 
 
+require("dotenv").config();
 
-mongoose.connect("mongodb+srv://dhruvindmehta:abcd1234@cluster0.fzzsy.mongodb.net/moviemate?retryWrites=true&w=majority&appName=Cluster0");
-
+mongoose.connect(process.env.MONGO_URI)
 app.post('/register', (req, res) => { 
     UserModel.create(req.body)
     .then(users=>res.json(users))
