@@ -82,22 +82,23 @@ app.post('/watchlist', async (req, res) => {
       res.status(500).json({ message: 'Error adding movie to watchlist' });
     }
   });
-
-  app.get('/watchlist', async (req, res) => {
-    const { userId } = req.query; // Correct way for GET requests
-
-    if (!userId) {
-        return res.status(400).json({ message: "User ID is required" });
-    }
+app.get('/watchlist', async (req, res) => {
+    const { userId } = req.query;
+    if (!userId) return res.status(400).json({ message: "User ID is required" });
 
     try {
         const watchlist = await WatchlistModel.find({ userId });
-        res.status(200).json(watchlist);
+        const formattedWatchlist = watchlist.map(movie => ({
+            ...movie.toObject(),
+            id: movie._id // Ensure an `id` field is included
+        }));
+        res.status(200).json(formattedWatchlist);
     } catch (err) {
         console.error("Error fetching watchlist:", err);
         res.status(500).json({ message: "Error fetching watchlist" });
     }
 });
+
 
 
 app.listen(3001, () => {
