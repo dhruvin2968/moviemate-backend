@@ -99,6 +99,22 @@ app.get('/watchlist', async (req, res) => {
     }
 });
 
+app.delete('/watchlist', async (req, res) => {
+    const { userId, movieId } = req.body; // Get userId and movieId from request body
+
+    try {
+        const result = await WatchlistModel.findOneAndDelete({ userId, 'movie.id': movieId });
+
+        if (!result) {
+            return res.status(404).json({ message: 'Movie not found in watchlist' });
+        }
+
+        res.json({ message: 'Movie removed from watchlist' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error removing movie from watchlist' });
+    }
+});
 
 
 app.listen(3001, () => {
