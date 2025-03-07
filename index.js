@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
                     console.log("User ID:", user._id); // Debugging
 
                     // Send userId in response
-                    res.json({ success: true, userId: user._id });
+                    res.json({ success: true, userId: user._id ,username:user.username});
                 } else {
                     res.json({ success: false, message: "Incorrect Password" });
                 }
