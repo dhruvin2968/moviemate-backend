@@ -86,8 +86,7 @@ app.post('/watchlist', verifyToken, async (req, res) => {
 });
 
 app.get('/watchlist',  verifyToken, async (req, res) => {
-    const { userId } = req.query;
-    if (!userId) return res.status(400).json({ message: "User ID is required" });
+    const userId = req.userId;
 
     try {
         const watchlist = await WatchlistModel.find({ userId });
@@ -103,8 +102,8 @@ app.get('/watchlist',  verifyToken, async (req, res) => {
 });
 
 app.delete('/watchlist', verifyToken, async (req, res) => {
-    const { userId, movieId } = req.body; // Get userId and movieId from request body
-
+    const {movieId } = req.body; // Get userId and movieId from request body
+    const userId = req.userId;
     try {
         const result = await WatchlistModel.findOneAndDelete({ userId, 'movie.id': movieId });
 
