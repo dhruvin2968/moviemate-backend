@@ -1,5 +1,4 @@
 
-```markdown
 # 🎬 MovieMate Backend
 
 This is the **backend server** for the MovieMate MERN Stack application. It handles secure user authentication using JWT, stores watchlist data in MongoDB, and provides protected API endpoints for user-specific data operations.
@@ -21,7 +20,7 @@ This is the **backend server** for the MovieMate MERN Stack application. It hand
 - Delete a movie from watchlist
 - All actions require valid JWT
 
----
+
 
 ## 📁 Folder Structure
 
@@ -44,25 +43,24 @@ This is the **backend server** for the MovieMate MERN Stack application. It hand
 
 ````
 
----
-
 ## 📜 API Endpoints
 
 ### 🔐 Auth Routes
-
+```
 | Method | Route          | Description             |
 |--------|----------------|-------------------------|
 | POST   | `/api/auth/register` | Register a new user     |
 | POST   | `/api/auth/login`    | Login & receive JWT     |
+```
 
 ### 🔒 Watchlist Routes *(Protected)*
+```
 | Method | Route              | Description             |
 |--------|--------------------|-------------------------|
 | POST   | `/api/watchlist/add`     | Add movie to watchlist  |
 | GET    | `/api/watchlist/get`     | Get all saved movies    |
 | DELETE | `/api/watchlist/delete/:movieId` | Remove movie by ID       |
-
----
+```
 
 ## 🔑 JWT Auth Flow
 
@@ -72,7 +70,6 @@ This is the **backend server** for the MovieMate MERN Stack application. It hand
 4. Backend middleware verifies and extracts user ID
 5. Routes proceed with personalized DB actions
 
----
 
 ## 🛠️ Setup Instructions
 
@@ -103,29 +100,6 @@ JWT_SECRET=your_jwt_secret_key
 npm run dev
 ```
 
----
-
-## 🕒 Commit Highlights
-
-### 🗓️ May 14, 2025
-
-* ✅ `Session Expiry Time = 10m` configured
-* 🔒 Fixed `userId` extraction bug from JWT
-* ✨ `feat(auth):` JWT-based auth + watchlist protection
-
-### 🗓️ March 7, 2025
-
-* 🎯 Watchlist complete (Add/Delete/View)
-* 📦 Stored `userId` in localStorage
-* 🔓 Allowed hosted site access
-
-### 🗓️ March 4, 2025
-
-* 🧪 `.env` setup
-* 🚀 Initial commit
-
----
-
 ## 🔮 Future Improvements
 
 * Refresh token strategy
@@ -139,12 +113,8 @@ npm run dev
 ## 👨‍💻 Author
 
 **Dhruvin Mehta**
-[GitHub](https://github.com/dhruvin3007)
+[GitHub](https://github.com/dhruvin2968)
 
----
 
-## 📄 License
-
-This project is licensed under the MIT License.
 
 
