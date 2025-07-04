@@ -269,8 +269,8 @@ app.delete("/watchlist", verifyToken, async (req, res) => {
 });
 
 // TMDB Proxy
-app.get("/api/tmdb/:endpoint", async (req, res) => {
-  const { endpoint } = req.params;
+app.get('/api/tmdb/*', async (req, res) => {
+  const endpoint = req.params[0]; // this grabs the full path like "movie/now_playing"
   const { query = "", page = 1 } = req.query;
 
   const TMDB_API_KEY = process.env.TMDB_API_KEY;
