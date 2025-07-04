@@ -173,10 +173,7 @@ app.use(cors({
   credentials: true
 }));
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect(process.env.MONGO_URI);
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
