@@ -164,6 +164,7 @@ app.get('/api/tmdb/*', async (req, res) => {
   }
 
   try {
+    console.log("Requesting TMDB:", endpoint, "Query:", query, "Page:", page);
     const fetch = (await import("node-fetch")).default;
     const tmdbUrl = `https://api.themoviedb.org/3/${endpoint}?api_key=${TMDB_API_KEY}&query=${query}&page=${page}`;
     const response = await fetch(tmdbUrl);
