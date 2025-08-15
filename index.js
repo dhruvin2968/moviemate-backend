@@ -11,12 +11,16 @@ const compression = require("compression");
 const NodeCache = require("node-cache");
 require("dotenv").config();
 
-const fetch = require("node-fetch");
-setInterval(() => {
-  fetch("https://moviemate-backend-tpz4.onrender.com")
-    .then(() => console.log("Pinged backend"))
-    .catch(err => console.error("Ping failed", err));
-}, 13 * 60 * 1000); 
+setInterval(async () => {
+  try {
+    const fetch = (await import("node-fetch")).default;
+    await fetch("https://moviemate-backend-tpz4.onrender.com");
+    console.log("Pinged backend");
+  } catch (err) {
+    console.error("Ping failed", err);
+  }
+}, 13 * 60 * 1000);
+
 
 
 const app = express();
