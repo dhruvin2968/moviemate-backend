@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(compression()); // compress responses
 
 app.use(cors({
-  origin: ["http://localhost:3000","https://moviematebyayush.netlify.app/", "https://moviematebydhruvin.netlify.app", "https://moviematebydhruvin.vercel.app"],
+  origin: ["http://localhost:3000","https://moviematebyayush.netlify.app", "https://moviematebydhruvin.netlify.app", "https://moviematebydhruvin.vercel.app"],
   credentials: true
 }));
 
